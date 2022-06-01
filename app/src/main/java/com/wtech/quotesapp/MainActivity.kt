@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             val clip=ClipData.newPlainText("copied Quote",text)
             clipBoard.setPrimaryClip(clip)
             Toast.makeText(this@MainActivity
-            ,"Qoute Copied to clipBoard",Toast.LENGTH_LONG)
+            ,"Quote Copied to clipBoard",Toast.LENGTH_LONG)
                 .show()
         }
 
