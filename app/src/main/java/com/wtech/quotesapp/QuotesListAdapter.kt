@@ -11,7 +11,8 @@ import com.wtech.quotesapp.databinding.ListOfQuotesLayoutBinding
 
 class QuotesListAdapter(
     val myContext: Context,
-    val listOfQuotesResponse:List<QuotesResponse>)
+    val listOfQuotesResponse:List<QuotesResponse>,
+    val listener: CopyQuoteListener)
     :RecyclerView.Adapter<QuotesViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuotesViewHolder {
        return QuotesViewHolder(
@@ -23,6 +24,14 @@ class QuotesListAdapter(
     override fun onBindViewHolder(holder: QuotesViewHolder, position: Int) {
         holder.textQuote.text=listOfQuotesResponse[position].text
         holder.textAuthor.text=listOfQuotesResponse[position].author
+        holder.buttonCopyQuoteText.setOnClickListener {
+            listener.onQuoteClicked(
+                listOfQuotesResponse[
+                        holder.adapterPosition
+                ].text
+            )
+
+        }
     }
 
     override fun getItemCount(): Int =listOfQuotesResponse.size
